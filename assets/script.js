@@ -13,7 +13,7 @@ var randomNumber = function(min,max) {
 //var to create upper case characters
 var alphaUpperCase = alpha.map(alpha => alpha.toUpperCase());
 
-var userResponse
+var userResponse;
 
 var generatePassword = function() {
   //ask person how long they want the password
@@ -109,7 +109,15 @@ var generatePassword = function() {
   else if (useSpecialCharacters) {
     userResponse = symbol;
     console.log(userResponse);
-  }
+  };
+  
+  for (let i = 0; i < passwordLength; i++) {
+    var responses = userResponse[Math.floor(Math.random() * userResponse.length)];
+    password = password + responses;
+  };
+
+  return password;
+
 };
 
 // var generatePassword = function() {
