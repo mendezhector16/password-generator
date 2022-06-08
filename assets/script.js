@@ -69,8 +69,47 @@ var generatePassword = function() {
     console.log(userResponse);
   }
   //two are ture
+  else if (useNumbers && useLowerCase) {
+    userResponse = numb.concat(alpha);
+    console.log(userResponse);
+  }
+  else if (useNumbers && useUpperCase) {
+    userResponse = numb.concat(alphaUpperCase);
+    console.log(userResponse);
+  }
+  else if (useNumbers && useSpecialCharacters) {
+    userResponse = numb.concat(symbol);
+    console.log(userResponse);
+  }
+  else if (useLowerCase && useUpperCase) {
+    userResponse = alpha.concat(alphaUpperCase);
+    console.log(userResponse);
+  }
+  else if (useLowerCase && useSpecialCharacters) {
+    userResponse = alpha.concat(symbol);
+    console.log(userResponse);
+  }
+  else if (useUpperCase && useSpecialCharacters) {
+    userResponse = alphaUpperCase.concat(symbol);
+    console.log(userResponse);
+  }
   //one is true
-
+  else if (useNumbers) {
+    userResponse = numb;
+    console.log(userResponse);
+  }
+  else if (useLowerCase) {
+    userResponse = alpha;
+    console.log(userResponse);
+  }
+  else if (useUpperCase) {
+    userResponse = alphaUpperCase;
+    console.log(userResponse);
+  }
+  else if (useSpecialCharacters) {
+    userResponse = symbol;
+    console.log(userResponse);
+  }
 };
 
 // var generatePassword = function() {
