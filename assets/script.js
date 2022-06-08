@@ -1,17 +1,32 @@
 // Assignment code here
+//var for general characters
 var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var numb = [0,1,2,3,4,5,6,7,8,9];
 var symbol = ["!","@","#","$","%","^","&","*","_","-","+","=",".","?"];
 
+//var to randomize characters
 var randomNumber = function(min,max) {
   var value = Math.floor(Math.random() * (max - min + 1) +min);
 
   return value;
 };
 
+//var to create upper case characters
 var toUpperCase = function(x) {
   return x.toUpperCase();
 };
+
+//var to confirm use of numbers
+var useNumbers = window.confirm ("Using numbers in your password may help with security. Would you life to include numbers?");
+
+//var to confirm use of lowercase letters
+var useLowerCase = window.confirm ("Using lower case letters in your password may help with security. Would you like to include lower case letters?");
+
+//var to confirm use of upper case characters
+var useUpperCase = window.confirm ("Using upper case letters in your password may help with security. Would you like to include upper case ltters? ");
+
+//var to confirm special charecters
+var useSpecialCharacters = window.confirm ("Using special charecters in your password may help with security. Would you like to include special characters?")
 
 
 var setPasswordLength = function() {
@@ -32,19 +47,7 @@ var setPasswordLength = function() {
   }
 };
 
-// create confirm prompt for numbers
-var setUseNumbers = function() {
-  var useNumbers = window.confirm("Using numbers in your password may help with security. Would you life to include numbers?")
 
-  //comfirm user wants numbers
-  if (useNumbers) {
-
-    return true;
-  }
-  else {
-
-  }
-}
 
 //create confirm prompt for uppercase characters called characterUpper
 
@@ -55,8 +58,6 @@ var setUseNumbers = function() {
 var generatePassword = function() {
   var password = ""
   var passwordLength = setPasswordLength();
-  // var useNumbers = setUseNumbers()
-  // var useSpecialCharacters = setUseSpecialCharacters()
 
   for (let i = 0; i < passwordLength; i++) {
     var randomCharacterAlpha = alpha.charAt(randomNumber(0, alpha.length));
