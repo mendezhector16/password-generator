@@ -1,75 +1,70 @@
 // Assignment code here
-var alpha = "abcdefghijklmnopqrstuvwxyz";
-var numb = "0123456789";
-var symbol = "!@#$%^&*_-+=.?";
+var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var numb = [0,1,2,3,4,5,6,7,8,9];
+var symbol = ["!","@","#","$","%","^","&","*","_","-","+","=",".","?"];
 
-var generatePassword = function() {
+var randomNumber = function(min,max) {
+  var value = Math.floor(Math.random() * (max - min + 1) +min);
+
+  return value;
+};
+
+var toUpperCase = function(x) {
+  return x.toUpperCase();
+};
+
+
+var setPasswordLength = function() {
   //ask person how long they want the password
-  var promptLength = window.prompt("Would you like 8, 10, or 12 characters in your password? Please type the numbers 8, 10, or 12 to chose.")
-
-  if (promptLength === "8") {
-    //if 8 characters go to  generateEight()
-
-    generateEight();
-
-  }
-  else if (promptLength === "10") {
-    //if 10 charcters go to generateTen()
-    generateTen();
-
-  }
-  else if (promptLength === "12") {
-    //if 12 characters go to generateTwelve
-    generateTwelve();
-
-
-  }
-  else if ( promptLength === "" || promptLength === null) {
+  var passwordLength = window.prompt("How many characters would you like your password to be? Please choose a number between 8-128.")
+ 
+  if ( passwordLength === "" || passwordLength === null) {
     window.alert("Please provide a valid answer! Try again.");
-    return generatePassword();
+    generatePassword();
+  }
+  else if (passwordLength < 8 || passwordLength > 128) {
+    window.alert("Please provide a valid number between 8 and 128! Try again.");
+    generatePassword();
   }
   else {
-    window.alert("Please provide a valid answer! Try again.");
-    return generatePassword();
+    setUseNumbers();
+    return passwordLength;
   }
 };
 
-var generateEight = function() {
-  window.alert ("You have decided to use 8 characters! Lets get started.");
+// create confirm prompt for numbers
+var setUseNumbers = function() {
+  var useNumbers = window.confirm("Using numbers in your password may help with security. Would you life to include numbers?")
 
-}
+  //comfirm user wants numbers
+  if (useNumbers) {
 
-var generateTen = function() {
-  window.alert("You have decided to use 10 characters! Lets get started.");
-
-}
-
-var generateTwelve = function() {
-  window.alert("You have decided to use 12 characters! Lets get started.");
-
-}
-
-// create confirm prompt for lower case characters called characterLower
-var caseSelect = function() {
-
-  var characterLower = function() {
-    var confirmLower = window.confirm("Using lower case letters in your password may help with security. Would you like to include lowercase letters?")
-
+    return true;
   }
-
-  var characterUpper = function() {
-    var confirmLower = window.confirm("Using lower case letters in your password may help with security. Would you like to include lowercase letters?")
+  else {
 
   }
 }
 
 //create confirm prompt for uppercase characters called characterUpper
 
-//create prompt for numbers
+//create vonprompt for numbers
 
 // create prompt for special characters
 
+var generatePassword = function() {
+  var password = ""
+  var passwordLength = setPasswordLength();
+  // var useNumbers = setUseNumbers()
+  // var useSpecialCharacters = setUseSpecialCharacters()
 
+  for (let i = 0; i < passwordLength; i++) {
+    var randomCharacterAlpha = alpha.charAt(randomNumber(0, alpha.length));
+    var randomCharacterNumbers = numb.charAt(randomNumber(0,numb.length));
+    password = password + (randomCharacterAlpha) + (randomCharacterNumbers);
+  }
+  return password
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
